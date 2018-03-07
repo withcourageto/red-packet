@@ -1,0 +1,21 @@
+version: '3.0'
+
+services:
+
+  red-packet:
+    build: demo
+    ports:
+      - "8080:8080"
+
+  redis:
+    image: redis
+    restart: on-failure
+    ports:
+      - "6379:6379"
+  mysql-server:
+    build: mysql-server
+    environment:
+      MYSQL_ROOT_PASSWORD: lideng
+      MYSQL_DATABASE: red_packet
+    ports:
+      - "3306:3306"
